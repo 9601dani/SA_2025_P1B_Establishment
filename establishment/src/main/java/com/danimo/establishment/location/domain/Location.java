@@ -4,6 +4,7 @@ import com.danimo.establishment.common.domain.annotations.DomainEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -11,14 +12,17 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Location {
 
-    private UUID id;
+    private LocationId id;
     private String name;
     private String address;
     private String city;
     private String state;
     private String country;
     private String zip;
-    private String phone;
+    private LocationPhone phone;
     private Integer capacity;
     private boolean available;
+    private String description;
+    private LocationType type;
+    private LocationCreatedAt createdAt;
 }

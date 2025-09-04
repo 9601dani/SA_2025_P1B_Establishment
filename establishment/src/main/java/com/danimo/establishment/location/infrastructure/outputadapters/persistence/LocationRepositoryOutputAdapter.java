@@ -3,6 +3,7 @@ package com.danimo.establishment.location.infrastructure.outputadapters.persiste
 import com.danimo.establishment.common.infrastructure.annotations.PersistenceAdapter;
 import com.danimo.establishment.location.application.inputports.ListingAllLocationsInputPort;
 import com.danimo.establishment.location.application.outputports.persistence.FindingAllLocationsOutputPort;
+import com.danimo.establishment.location.application.outputports.persistence.FindingLocationByIdOutputPort;
 import com.danimo.establishment.location.application.outputports.persistence.FindingLocationByNameOutputPort;
 import com.danimo.establishment.location.application.outputports.persistence.StoringLocationOutputPort;
 import com.danimo.establishment.location.domain.Location;
@@ -15,10 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @PersistenceAdapter
 public class LocationRepositoryOutputAdapter implements FindingLocationByNameOutputPort,
-        StoringLocationOutputPort, FindingAllLocationsOutputPort {
+        StoringLocationOutputPort, FindingAllLocationsOutputPort, FindingLocationByIdOutputPort {
 
     private final LocationDbEntityJpaRepository locationDbEntityJpaRepository;
     private final LocationPersistenceMapper locationPersistenceMapper;
@@ -53,5 +55,11 @@ public class LocationRepositoryOutputAdapter implements FindingLocationByNameOut
                 .stream()
                 .map(locationPersistenceMapper::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Optional<Location> findById(UUID id) {
+        return locationDbEntityJpaRepository.findById(id)
+                .map(locationPersistenceMapper::toDomain);
     }
 }

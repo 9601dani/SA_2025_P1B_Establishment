@@ -8,7 +8,7 @@ import java.util.UUID;
 public class LocationId {
     private final UUID id;
 
-    private LocationId(UUID id) {
+    public LocationId(UUID id) {
         this.id = id;
     }
 

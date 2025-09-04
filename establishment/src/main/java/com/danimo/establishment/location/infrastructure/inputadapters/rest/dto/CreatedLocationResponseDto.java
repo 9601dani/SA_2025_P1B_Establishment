@@ -1,9 +1,6 @@
 package com.danimo.establishment.location.infrastructure.inputadapters.rest.dto;
 
 import com.danimo.establishment.location.domain.Location;
-import com.danimo.establishment.location.domain.LocationId;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 

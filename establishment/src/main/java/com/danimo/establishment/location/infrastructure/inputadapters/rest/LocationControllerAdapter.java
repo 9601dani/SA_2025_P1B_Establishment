@@ -5,11 +5,13 @@ import com.danimo.establishment.common.infrastructure.annotations.WebAdapter;
 import com.danimo.establishment.location.application.inputports.CreatingEstablishmentInputPort;
 import com.danimo.establishment.location.application.inputports.FindingLocationByIdInputPort;
 import com.danimo.establishment.location.application.inputports.ListingAllLocationsInputPort;
+import com.danimo.establishment.location.application.inputports.UpdatingLocationInputPort;
 import com.danimo.establishment.location.application.usecases.createlocation.CreateLocationDto;
 import com.danimo.establishment.location.domain.Location;
 import com.danimo.establishment.location.infrastructure.inputadapters.rest.dto.CreatedLocationRequestDto;
 import com.danimo.establishment.location.infrastructure.inputadapters.rest.dto.CreatedLocationResponseDto;
 import com.danimo.establishment.location.infrastructure.inputadapters.rest.dto.LocationResponse;
+import com.danimo.establishment.location.infrastructure.inputadapters.rest.dto.UpdatedLocationRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -32,14 +34,17 @@ public class LocationControllerAdapter {
     private final CreatingEstablishmentInputPort creatingEstablishmentInputPort;
     private final ListingAllLocationsInputPort listingAllLocationsInputPort;
     private final FindingLocationByIdInputPort findingLocationByIdInputPort;
+    private final UpdatingLocationInputPort updatingLocationInputPort;
 
     @Autowired
     public LocationControllerAdapter(CreatingEstablishmentInputPort creatingEstablishmentInputPort,
                                      ListingAllLocationsInputPort listingAllLocationsInputPort,
-                                     FindingLocationByIdInputPort findingLocationByIdInputPort) {
+                                     FindingLocationByIdInputPort findingLocationByIdInputPort,
+                                     UpdatingLocationInputPort updatingLocationInputPort) {
         this.creatingEstablishmentInputPort = creatingEstablishmentInputPort;
         this.listingAllLocationsInputPort = listingAllLocationsInputPort;
         this.findingLocationByIdInputPort = findingLocationByIdInputPort;
+        this.updatingLocationInputPort = updatingLocationInputPort;
     }
 
     @Operation(
@@ -108,11 +113,26 @@ public class LocationControllerAdapter {
             @ApiResponse(responseCode = "404", description = "Establecimiento no encontrado")
     })
     @GetMapping("/{id}")
-    @Transactional(readOnly = true)
+    @Transactional
     public ResponseEntity<LocationResponse> getLocationById(@PathVariable String id) {
        Location location = findingLocationByIdInputPort.findById(UUID.fromString(id));
 
        return ResponseEntity.ok(LocationResponse.fromDomain(location));
+    }
+
+    @Operation(
+            summary = "Editar un establecimiento",
+            description = "Devuelve el establecimiento actualizado."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Establecimiento actualizado"),
+            @ApiResponse(responseCode = "404", description = "Establecimiento no actualizado")
+    })
+    @PutMapping
+    @Transactional
+    public ResponseEntity<LocationResponse> updateLocation(@RequestBody UpdatedLocationRequestDto dto) {
+        Location location = updatingLocationInputPort.updateLocation(dto.toDomain());
+        return ResponseEntity.ok(LocationResponse.fromDomain(location));
     }
 
 

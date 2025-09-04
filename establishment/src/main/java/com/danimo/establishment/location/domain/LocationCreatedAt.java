@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class LocationCreatedAt {
     private final LocalDateTime createdAt;
 
-    private LocationCreatedAt(LocalDateTime createdAt) {
+    public LocationCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
     public static LocationCreatedAt generate() {

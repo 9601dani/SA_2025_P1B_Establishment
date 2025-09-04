@@ -3,11 +3,13 @@ package com.danimo.establishment.location.domain;
 import com.danimo.establishment.common.domain.annotations.DomainEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
+@Setter
 @DomainEntity
 @AllArgsConstructor
 public class Location {

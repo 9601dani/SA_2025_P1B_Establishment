@@ -95,9 +95,9 @@ public class LocationControllerAdapter {
             @ApiResponse(responseCode = "404", description = "Establecimiento no encontrado")
     })
     @RequestMapping(method = RequestMethod.HEAD, path = "/check/{id}")
-    public ResponseEntity<Void> checkLocationExistence(@PathVariable UUID id) {
+    public ResponseEntity<Void> checkLocationExistence(@PathVariable String id) {
         try {
-            findingLocationByIdInputPort.findById(id);
+            findingLocationByIdInputPort.findById(UUID.fromString(id));
             return ResponseEntity.ok().build();
         } catch (LocationNotFoundException e) {
             return ResponseEntity.notFound().build();

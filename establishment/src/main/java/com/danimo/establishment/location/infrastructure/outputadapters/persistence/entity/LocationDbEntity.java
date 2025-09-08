@@ -45,5 +45,7 @@ public class LocationDbEntity {
     private String type;
     @Column
     private LocalDateTime createdAt;
+    @Column
+    private String imageUrl;
 
 }

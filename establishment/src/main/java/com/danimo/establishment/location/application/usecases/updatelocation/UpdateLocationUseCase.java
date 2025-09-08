@@ -39,6 +39,7 @@ public class UpdateLocationUseCase implements UpdatingLocationInputPort {
         location.setDescription(dto.getDescription());
         location.setType(dto.getType());
         location.setCreatedAt(dto.getCreatedAt());
+        location.setImageUrl(dto.getImageUrl());
 
         return this.storingLocationOutputPort.save(location);
     }

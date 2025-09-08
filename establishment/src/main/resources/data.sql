@@ -13,7 +13,8 @@ INSERT INTO location (
     available,
     description,
     type,
-    created_at
+    created_at,
+    image_url
 ) VALUES
       (
           '550e8400-e29b-41d4-a716-446655440000',
@@ -28,7 +29,8 @@ INSERT INTO location (
           TRUE,
           'Oficina principal con salas de reuniones y estacionamiento',
           'HOTEL',
-          '2025-09-03 10:00:00'
+          '2025-09-03 10:00:00',
+       'images/a6363156-812c-4e41-b17b-16aef595e715'
       ),
       (
           '123e4567-e89b-12d3-a456-426614174001',
@@ -43,7 +45,8 @@ INSERT INTO location (
           TRUE,
           'Sucursal ubicada en la zona norte con capacidad mediana',
           'RESTAURANT',
-          '2025-09-03 11:15:00'
+          '2025-09-03 11:15:00',
+          'images/a6363156-812c-4e41-b17b-16aef595e715'
       ),
       (
           '123e4567-e89b-12d3-a456-426614174002',
@@ -58,7 +61,8 @@ INSERT INTO location (
           FALSE,
           'Sucursal temporalmente cerrada por remodelación',
           'HOTEL',
-          '2025-09-03 12:30:00'
+          '2025-09-03 12:30:00',
+          'images/a6363156-812c-4e41-b17b-16aef595e715'
       ),
       (
           '123e4567-e89b-12d3-a456-426614174003',
@@ -73,7 +77,8 @@ INSERT INTO location (
           TRUE,
           'Centro logístico para almacenamiento y distribución',
           'RESTAURANT',
-          '2025-09-03 14:00:00'
+          '2025-09-03 14:00:00',
+          'images/a6363156-812c-4e41-b17b-16aef595e715'
       ),
       (
           '123e4567-e89b-12d3-a456-426614174004',
@@ -88,5 +93,6 @@ INSERT INTO location (
           TRUE,
           'Sucursal principal en Ciudad de México con amplio acceso',
           'HOTEL',
-          '2025-09-03 15:30:00'
+          '2025-09-03 15:30:00',
+          'images/a6363156-812c-4e41-b17b-16aef595e715'
       );

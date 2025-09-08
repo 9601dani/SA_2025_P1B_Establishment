@@ -28,6 +28,7 @@ public class CreatedLocationRequestDto {
     private String description;
     @NotBlank
     private String type;
+    private String imageUrl;
 
     public CreateLocationDto toDomain(){
         return new CreateLocationDto(
@@ -42,7 +43,8 @@ public class CreatedLocationRequestDto {
                 capacity,
                 available,
                 description,
-                type
+                type,
+                imageUrl
         );
     }
 }

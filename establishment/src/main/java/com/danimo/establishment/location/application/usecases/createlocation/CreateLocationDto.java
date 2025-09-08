@@ -20,7 +20,7 @@ public class CreateLocationDto {
     private boolean available;
     private String description;
     private String type;
-
+    private String imageUrl;
     public Location toDomain(){
         return new Location(
                 LocationId.generate(),
@@ -35,7 +35,8 @@ public class CreateLocationDto {
                 available,
                 description,
                 new LocationType(type),
-                LocationCreatedAt.generate()
+                LocationCreatedAt.generate(),
+                imageUrl
         );
     }
 }

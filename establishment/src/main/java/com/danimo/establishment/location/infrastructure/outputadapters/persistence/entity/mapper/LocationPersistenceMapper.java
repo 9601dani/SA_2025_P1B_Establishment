@@ -23,7 +23,8 @@ public class LocationPersistenceMapper {
                 dbEntity.isAvailable(),
                 dbEntity.getDescription(),
                 new LocationType(dbEntity.getType()),
-                LocationCreatedAt.fromDomain(dbEntity.getCreatedAt())
+                LocationCreatedAt.fromDomain(dbEntity.getCreatedAt()),
+                dbEntity.getImageUrl()
         );
     }
 
@@ -45,7 +46,8 @@ public class LocationPersistenceMapper {
                 location.isAvailable(),
                 location.getDescription(),
                 location.getType().getName(),
-                location.getCreatedAt().getCreatedAt()
+                location.getCreatedAt().getCreatedAt(),
+                location.getImageUrl()
         );
     }
 }

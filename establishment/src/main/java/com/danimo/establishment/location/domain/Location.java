@@ -27,4 +27,5 @@ public class Location {
     private String description;
     private LocationType type;
     private LocationCreatedAt createdAt;
+    private String imageUrl;
 }

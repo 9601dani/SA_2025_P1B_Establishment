@@ -20,6 +20,7 @@ public class UpdateLocationDto {
     private String description;
     private LocationType type;
     private LocationCreatedAt createdAt;
+    private String imageUrl;
 
     public Location toDomain(){
         return new Location(
@@ -35,7 +36,8 @@ public class UpdateLocationDto {
                 available,
                 description,
                 type,
-                createdAt
+                createdAt,
+                imageUrl
         );
     }
 }

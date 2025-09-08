@@ -20,6 +20,7 @@ public class LocationResponse {
     private final String description;
     private final String type;
     private final LocalDateTime createdAt;
+    private final String imageUrl;
 
     public static LocationResponse fromDomain(Location location) {
         return new LocationResponse(
@@ -35,7 +36,8 @@ public class LocationResponse {
                 location.isAvailable(),
                 location.getDescription(),
                 location.getType().getName(),
-                location.getCreatedAt().getCreatedAt()
+                location.getCreatedAt().getCreatedAt(),
+                location.getImageUrl()
         );
     }
 }

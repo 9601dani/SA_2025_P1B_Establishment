@@ -40,6 +40,7 @@ public class UpdatedLocationRequestDto {
     private String type;
     @NotBlank
     private LocalDateTime createdAt;
+    private String imageUrl;
 
     public UpdateLocationDto toDomain(){
         return new UpdateLocationDto(
@@ -55,8 +56,8 @@ public class UpdatedLocationRequestDto {
                 available,
                 description,
                 new LocationType(type),
-                new LocationCreatedAt(createdAt)
-
+                new LocationCreatedAt(createdAt),
+                imageUrl
         );
     }
 

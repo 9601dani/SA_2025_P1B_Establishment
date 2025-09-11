@@ -135,6 +135,40 @@ public class LocationControllerAdapter {
         return ResponseEntity.ok(LocationResponse.fromDomain(location));
     }
 
+    @Operation(
+            summary = "Obtener los establecimientos para la app del cliente",
+            description = "Devuelve la información de todos los establecimiento correspondientes."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Establecimientos encontrados"),
+            @ApiResponse(responseCode = "404", description = "Establecimientos no encontrados")
+    })
+    @GetMapping("/client")
+    @Transactional
+    public ResponseEntity<List<LocationResponse>> getAllLocationsClient() {
+        List<LocationResponse> locations = listingAllLocationsInputPort.getAllLocations()
+                .stream()
+                .map(LocationResponse::fromDomain)
+                .toList();
+
+        return ResponseEntity.ok(locations);
+    }
+
+    @Operation(
+            summary = "Busca el establecimiento para la app de cliente",
+            description = "Devuelve el establecimiento si existe."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Establecimiento encontrado"),
+            @ApiResponse(responseCode = "404", description = "Establecimiento no encontrado")
+    })
+    @GetMapping("/client/{id}")
+    @Transactional
+    public ResponseEntity<LocationResponse> getLocationByIdClient(@PathVariable String id) {
+        Location location = findingLocationByIdInputPort.findById(UUID.fromString(id));
+
+        return ResponseEntity.ok(LocationResponse.fromDomain(location));
+    }
 
 
 }

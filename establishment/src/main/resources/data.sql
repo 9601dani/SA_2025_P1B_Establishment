@@ -96,3 +96,12 @@ INSERT INTO location (
           '2025-09-03 15:30:00',
           'images/a6363156-812c-4e41-b17b-16aef595e715'
       );
+
+INSERT INTO opinions (
+    id, location_id, username, score, opinion_title, comment, created_at
+) VALUES
+      ('11111111-1111-1111-1111-111111111111','550e8400-e29b-41d4-a716-446655440000','juan.perez',5,'Excelente servicio','La atención en la oficina central fue de primera, muy recomendable.', CURRENT_TIMESTAMP),
+      ('22222222-2222-2222-2222-222222222222','123e4567-e89b-12d3-a456-426614174001','maria.garcia',4,'Buena experiencia','La sucursal norte es cómoda y el personal muy amable.', CURRENT_TIMESTAMP),
+      ('33333333-3333-3333-3333-333333333333','123e4567-e89b-12d3-a456-426614174002','carlos.lopez',2,'Cerrada por remodelación','Intenté visitar pero estaba cerrada, deberían avisar en la web.', CURRENT_TIMESTAMP),
+      ('44444444-4444-4444-4444-444444444444','123e4567-e89b-12d3-a456-426614174003','ana.martinez',3,'Regular','El centro logístico cumple su función, aunque la atención fue un poco lenta.', CURRENT_TIMESTAMP),
+      ('55555555-5555-5555-5555-555555555555','123e4567-e89b-12d3-a456-426614174004','pedro.sanchez',5,'Sucursal excelente','La sucursal de CDMX es amplia, moderna y con excelente ubicación.', CURRENT_TIMESTAMP);

@@ -20,6 +20,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class LocationDbEntity {
     @Id
+    @Column(columnDefinition = "CHAR(36)")
     private UUID id;
     @Column
     private String name;
